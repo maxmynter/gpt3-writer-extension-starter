@@ -14,6 +14,13 @@
     "default_title": "Generate message"
   },
   "permissions": ["contextMenus", "tabs", "storage"],
+  "host_permissions": ["https://*/*"],
+  "content_scripts": [
+    {
+      "matches": ["http://*/*", "https://*/*"],
+      "js": ["scripts/content.js"]
+    }
+  ],
   "background": {
     "service_worker": "scripts/contextMenuServiceWorker.js"
   }

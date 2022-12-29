@@ -7,7 +7,9 @@ const checkForKey = () => {
 };
 
 const encode = (input) => {
+  console.log("btoa 1");
   return btoa(input);
+  console.log("btoa 2");
 };
 
 const saveKey = () => {
@@ -26,13 +28,12 @@ const saveKey = () => {
     });
   }
 };
+const changeKey = () => {
+  document.getElementById("key_needed").style.display = "block";
+  document.getElementById("key_entered").style.display = "none";
+};
 
 document.getElementById("save_key_button").addEventListener("click", saveKey);
 document
   .getElementById("change_key_button")
   .addEventListener("click", changeKey);
-
-const changeKey = () => {
-  document.getElementById("key_needed").style.display = "block";
-  document.getElementById("key_entered").style.display = "none";
-};

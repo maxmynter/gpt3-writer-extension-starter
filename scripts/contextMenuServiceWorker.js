@@ -10,21 +10,17 @@ const getKey = () => {
   });
 };
 
-const sendMessage = (content) => {
-  chrome.tabs.query({ active: true, currentWindow: true }, (tabs) => {
-    const activeTab = tabs[0].id;
+const sendMessage = async (content) => {
+  const tabs = await chrome.tabs.query({ active: true, currentWindow: true });
+  const activeTab = tabs[0].id;
 
-    chrome.tabs.sendMessage(
-      activeTab,
-      { message: "inject", content },
-      {},
-      async (response) => {
-        if ((await response.status) === "failed") {
-          console.log("injection failed.");
-        }
-      }
-    );
+  const response = await chrome.tabs.sendMessage(activeTab, {
+    message: "inject",
+    content,
   });
+  if (response && response.status === "failed") {
+    console.log("injection failed.");
+  }
 };
 
 const generate = async (prompt) => {

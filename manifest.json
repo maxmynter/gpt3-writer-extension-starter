@@ -13,5 +13,8 @@
     "default_popup": "index.html",
     "default_title": "Generate message"
   },
-  "permissions": ["contextMenus", "tabs", "storage"]
+  "permissions": ["contextMenus", "tabs", "storage"],
+  "background": {
+    "service_worker": "scripts/contextMenuServiceWorker.js"
+  }
 }
